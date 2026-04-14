@@ -1,0 +1,6 @@
+@lendify_HostAddress = http://localhost:5247
+
+GET {{lendify_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
