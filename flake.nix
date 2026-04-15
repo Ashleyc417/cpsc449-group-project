@@ -16,6 +16,7 @@
 						#dotnet-aspnetcore
 						#dotnet-runtime
 					dotnet-sdk_8
+					act
 				];
 
 			shellHook = ''

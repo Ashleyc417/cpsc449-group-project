@@ -1,9 +1,11 @@
 namespace lendify.Models;
 
-public enum BorrowStatus 
+// Could probably just be a bool for optimising 
+// if just two enum values
+public enum BorrowStatus
 {
-	Borrowed,
-	Returned
+    Borrowed,
+    Returned
 }
 
 public class BorrowRecord
