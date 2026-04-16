@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace lendify.Models;
 
 public class Book
@@ -7,5 +9,6 @@ public class Book
 	public string Author { get; set; } = string.Empty;
 	public string Isbn { get; set; } = string.Empty;
 	public int TotalCopies { get; set; } = 0;
+	[ConcurrencyCheck]
 	public int AvailableCopies { get; set; } = 0;
 }
