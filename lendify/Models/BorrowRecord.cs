@@ -1,4 +1,4 @@
-namespace lendify.Modesl;
+namespace lendify.Models;
 
 public enum BorrowStatus
 {
