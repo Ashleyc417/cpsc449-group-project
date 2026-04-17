@@ -8,7 +8,7 @@ namespace lendify.Data
     public ApplicationDbContext CreateDbContext(string[] args)
     {
       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-      optionsBuilder.UseSqlite("Data Source=bookmanager.db");
+      optionsBuilder.UseSqlite("Data Source=lendify.db");
 
       return new ApplicationDbContext(optionsBuilder.Options);
     }
