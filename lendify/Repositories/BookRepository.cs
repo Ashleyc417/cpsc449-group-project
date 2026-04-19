@@ -15,6 +15,7 @@ public class BookRepository : IBookRepository
 
     public async Task<IEnumerable<Book>> GetAllAsync()
     {
+        // TODO: add pagination
         return await _context.Books.ToListAsync();
     }
 

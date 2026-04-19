@@ -10,6 +10,7 @@ public class BookService : IBookService
     private readonly IBookRepository _repo;
     private readonly IMemoryCache _cache;
     private const string AllBooksCacheKey = "all_books";
+    // TODO: maybe make cache duration configurable
 
     public BookService(IBookRepository repo, IMemoryCache cache)
     {
@@ -44,6 +45,7 @@ public class BookService : IBookService
 
     public async Task<BookResponseDto> CreateAsync(BookRequestDto dto)
     {
+        // TODO: validate ISBN format?
         if (dto.AvailableCopies > dto.TotalCopies)
             throw new InvalidOperationException("AvailableCopies cannot exceed TotalCopies.");
 
