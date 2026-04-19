@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Check
+        run: |
+            nix develop -c bash -c "
+              cd lendify
+              make check 
+              git diff --exit-code
+              "
+
+
