@@ -11,8 +11,8 @@ using lendify.Data;
 namespace lendify.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260419032600_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20260419084717_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,10 +31,12 @@ namespace lendify.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("AvailableCopies")
+                        .IsConcurrencyToken()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Isbn")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Isbn")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -63,13 +65,17 @@ namespace lendify.Migrations
                     b.Property<Guid>("MemberId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("MemberId");
 
                     b.ToTable("BorrowRecords");
                 });
@@ -94,6 +100,21 @@ namespace lendify.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("lendify.Models.BorrowRecord", b =>
+                {
+                    b.HasOne("lendify.Models.Book", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("lendify.Models.Member", null)
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
