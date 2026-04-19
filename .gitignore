@@ -1,2 +1,16 @@
-obj/
+# Build output
 bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+.vs/
+
+# Rider
+.idea/
+
+# dotnet
+*.db
+*.db-shm
+*.db-wal
