@@ -1,5 +1,7 @@
 namespace lendify.Models;
 
+// Could probably just be a bool for optimising 
+// if just two enum values
 public enum BorrowStatus
 {
     Borrowed,
