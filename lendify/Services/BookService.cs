@@ -23,7 +23,7 @@ public class BookService : IBookService
             return cached;
 
         var books = await _repo.GetAllAsync();
-        var result = books.Select(ToDto);
+        var result = books.Select(ToDto).ToList();
         _cache.Set(AllBooksCacheKey, result, TimeSpan.FromMinutes(5));
         return result;
     }
