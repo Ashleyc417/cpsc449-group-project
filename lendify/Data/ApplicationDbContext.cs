@@ -11,5 +11,18 @@ namespace lendify.Data
     public DbSet<Book> Books => Set<Book>();
     public DbSet<Member> Members => Set<Member>();
     public DbSet<BorrowRecord> BorrowRecords => Set<BorrowRecord>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<BorrowRecord>()
+            .HasOne<Book>()
+            .WithMany()
+            .HasForeignKey(b => b.BookId);
+
+        modelBuilder.Entity<BorrowRecord>()
+            .HasOne<Member>()
+            .WithMany()
+            .HasForeignKey(b => b.MemberId);
+    }
   }
 }

@@ -10,8 +10,8 @@ using lendify.Data;
 
 namespace lendify.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20260419063828_InitialCreate")]
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20260419084717_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
