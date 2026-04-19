@@ -1,6 +1,6 @@
 namespace lendify.Models;
 
-// Could probably just be a bool for optimising 
+// Could probably just be a bool for optimising
 // if just two enum values
 public enum BorrowStatus
 {
@@ -11,8 +11,8 @@ public enum BorrowStatus
 public class BorrowRecord
 {
 	public Guid Id { get; set; }
-	public Guid BookId { get; set; } // Guid for book id? I Might be wrong
-	public Guid MemberId { get; set; } // same here
+	public Guid BookId { get; set; }
+	public Guid MemberId { get; set; }
 	public DateTime BorrowDate { get; set; }
 	public DateTime? ReturnDate { get; set; }
 	public BorrowStatus Status { get; set; }
