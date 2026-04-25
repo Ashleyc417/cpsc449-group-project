@@ -1,6 +1,85 @@
 @lendify_HostAddress = http://localhost:5247
 
-GET {{lendify_HostAddress}}/weatherforecast/
+### Books
+GET {{lendify_HostAddress}}/api/books
 Accept: application/json
 
 ###
+GET {{lendify_HostAddress}}/api/books/{{bookId}}
+Accept: application/json
+
+###
+POST {{lendify_HostAddress}}/api/books
+Content-Type: application/json
+
+{
+  "title": "The Pragmatic Programmer",
+  "author": "David Thomas",
+  "isbn": "978-0135957059",
+  "totalCopies": 5,
+  "availableCopies": 5
+}
+
+###
+PUT {{lendify_HostAddress}}/api/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "The Pragmatic Programmer",
+  "author": "David Thomas",
+  "isbn": "978-0135957059",
+  "totalCopies": 5,
+  "availableCopies": 3
+}
+
+###
+DELETE {{lendify_HostAddress}}/api/books/{{bookId}}
+
+### Members
+GET {{lendify_HostAddress}}/api/members
+Accept: application/json
+
+###
+GET {{lendify_HostAddress}}/api/members/{{memberId}}
+Accept: application/json
+
+###
+POST {{lendify_HostAddress}}/api/members
+Content-Type: application/json
+
+{
+  "fullName": "Jane Doe",
+  "email": "jane.doe@example.com"
+}
+
+###
+PUT {{lendify_HostAddress}}/api/members/{{memberId}}
+Content-Type: application/json
+
+{
+  "fullName": "Jane Doe",
+  "email": "jane.updated@example.com"
+}
+
+###
+DELETE {{lendify_HostAddress}}/api/members/{{memberId}}
+
+### Borrow
+GET {{lendify_HostAddress}}/api/borrow
+Accept: application/json
+
+###
+GET {{lendify_HostAddress}}/api/borrow/member/{{memberId}}
+Accept: application/json
+
+###
+POST {{lendify_HostAddress}}/api/borrow
+Content-Type: application/json
+
+{
+  "bookId": "{{bookId}}",
+  "memberId": "{{memberId}}"
+}
+
+###
+PUT {{lendify_HostAddress}}/api/borrow/{{borrowId}}/return
